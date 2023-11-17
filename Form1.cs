@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -23,7 +23,7 @@ namespace geçen_seneki_sınav
         }
        
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)              // adding part
         {
             string title = textBox1.Text;
             string description = textBox4.Text;
@@ -34,7 +34,7 @@ namespace geçen_seneki_sınav
             if(!string.IsNullOrEmpty(title)&& !string.IsNullOrEmpty(description) 
                 && !string.IsNullOrEmpty(status) && !string.IsNullOrEmpty(user)&&!string.IsNullOrEmpty(selectedDateTime.ToString()))
             {
-                ListViewItem newİtem = new ListViewItem(title, 0);
+                ListViewItem newİtem = new ListViewItem(title, 0);          // liste ekleme
                 
                 newİtem.SubItems.Add(description);
                 newİtem.SubItems.Add(status);
@@ -51,48 +51,55 @@ namespace geçen_seneki_sınav
                 
         }
 
-        private void button5_Click(object sender, EventArgs e)
-        {
-            if(listView1.SelectedItems.Count > 0)
-            {
-                listView1.Items.Remove(listView1.SelectedItems[0]);
-            }
-           
-        }
-
-        private void button2_Click(object sender, EventArgs e)
+        private void button5_Click(object sender, EventArgs e)          //remove
         {
             if (listView1.SelectedItems.Count > 0)
             {
-                ListViewItem selected = listView1.SelectedItems[0];
+               foreach (ListViewItem selectedItem in listView1.SelectedItems)
+            {
+                listView1.Items.Remove(selectedItem);
+            }
+             
+            }        
+                                     
+        }
 
-                string currentStatus = selected.SubItems[3].Text;
+        private void button2_Click(object sender, EventArgs e)          //update
+        {
+            if (listView1.SelectedItems.Count > 0)
+            {
+              foreach(ListViewItem selected in listView1.SelectedItems) { 
+
+                string currentStatus = selected.SubItems[3].Text;       // Mevcut durumu al ve güncelle
                 selected.SubItems[2].Text = "Not Started";
                 selected.SubItems[4].Text = DateTime.Now.ToString();
+                }
             }
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void button3_Click(object sender, EventArgs e)         //update
         {
             if (listView1.SelectedItems.Count > 0)
             {
-                ListViewItem selected = listView1.SelectedItems[0];
+                foreach (ListViewItem selected in listView1.SelectedItems) { 
 
                 string currentStatus = selected.SubItems[3].Text;
                 selected.SubItems[2].Text = "Started";
                 selected.SubItems[4].Text = DateTime.Now.ToString();
+                }
             }
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void button4_Click(object sender, EventArgs e)         //update
         {
             if (listView1.SelectedItems.Count > 0)
             {
-                ListViewItem selected = listView1.SelectedItems[0];
+                foreach (ListViewItem selected in listView1.SelectedItems) { 
 
                 string currentStatus = selected.SubItems[3].Text;
                 selected.SubItems[2].Text = "Completed";
                 selected.SubItems[4].Text = DateTime.Now.ToString();
+                }
             }
         }
     }
