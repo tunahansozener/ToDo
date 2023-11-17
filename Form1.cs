@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace geçen_seneki_sınav
+namespace TodoList
 {
     public partial class Form1 : Form
     {
